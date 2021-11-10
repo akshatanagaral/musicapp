@@ -18,50 +18,31 @@ public class MusicAppUI {
 		service=new MusicServiceImpl();
 	}
 		
-	public void addMusic() {
-		System.out.println("Enter Song Details: ");
-		System.out.println("Song Name:");
-		String songName=scan.next()+scan.nextLine();
-		System.out.println("Film Name:");
-		String filmName=scan.next()+scan.nextLine();
-		System.out.println("Singer Name:");
-		String singerName=scan.next()+scan.nextLine();
-		
-		
-
-		Music music=new Music(songName,filmName,singerName);
-		Music savedMusic;
+	public void displayFavouriteSongs() 
+	{
+		System.out.println("The Favourite Songs are : ");
+		String song=null;
 		try {
-			savedMusic = service.addMusic(music);
-			System.out.println("Music Added Successfully:");
-			System.out.println(savedMusic);
+			song = service.FavouriteSongs();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
+		System.out.println(song);
 	}
-	public void updateMusic() throws Exception 
+	
+	public void displayRecomanded()
 	{
-		System.out.println("Enter Song Details :  ");
-		System.out.print("Song Name : ");
-		String songName=scan.next()+scan.nextLine();;
-	
-	
+		System.out.println("The Recomanded Songs are : ");
+		String song=null;
 		try {
-				System.out.print("Fim Name : ");
-				String filmName=scan.next()+scan.nextLine();
-				System.out.print("Singer Name : ");
-				String singerName=scan.next()+scan.nextLine();
-				
-				Music music= new Music(songName, filmName,singerName);
-				 service.updateMusic(music);
-				 System.out.println("Update Successfully");
-						
-		} catch (SQLException e) {
+			song = service.recomandedService();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
+		System.out.println(song);
 	}
 }

@@ -8,21 +8,21 @@ import com.muzix.app.model.Music;
 
 public class MusicServiceImpl implements MusicService {
 	private MusicDao daoObject;
+	
 	public MusicServiceImpl() throws SQLException{
-		//daoObj=new EmployeeDaoImpl();
+	
 		daoObject=new MusicDaoJdbcImpl();
 	}
 
 	@Override
-	public Music addMusic(Music music) throws Exception {
-		return daoObject.addMusic(music);
+	public  String FavouriteSongs() throws Exception {
+		return daoObject.FavouriteSongs() ;
 	
 	}
 
 	@Override
-	public Music updateMusic(Music music) throws Exception {
-	
-		return daoObject.updateMusic(music);
+	public String recomandedService() throws SQLException {
+		return daoObject.recomandedService() ;
 	}
 
 }
