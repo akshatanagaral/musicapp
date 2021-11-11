@@ -1,6 +1,7 @@
 package com.muzix.app.model;
 
 public class Music {
+
 	private String songName;
 	private String filmName;
 	private String singerName;
@@ -9,10 +10,12 @@ public Music(){
 	}
 public Music(String songName, String filmName, String singerName) {
 	super();
+	
 	this.songName = songName;
 	this.filmName = filmName;
 	this.singerName = singerName;
 }
+
 public String getSongName() {
 	return songName;
 }
@@ -31,9 +34,11 @@ public String getSingerName() {
 public void setSingerName(String singerName) {
 	this.singerName = singerName;
 }
+
 @Override
 public String toString() {
-	return "MusicPlayer [songName=" + songName + ", filmName=" + filmName + ", singerName=" + singerName + "]";
+	return "Music [songName=" + songName + ", filmName=" + filmName + ", singerName="
+			+ singerName + "]";
 }
 @Override
 public int hashCode() {
@@ -70,7 +75,6 @@ public boolean equals(Object obj) {
 		return false;
 	return true;
 }
-
 
 }
 

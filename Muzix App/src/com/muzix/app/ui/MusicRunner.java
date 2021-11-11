@@ -15,13 +15,19 @@ public class MusicRunner {
 //			e.printStackTrace();
 //		}
 		while(true){
-			System.out.println("Enter option:\n  [1 - Display Favourite Songs] \n [2-Display Recomandation] \n  [0-Exit]");
+			System.out.println("Enter option:\n  [1 - Display PlayList] \n [2 - Display Favourite Songs] \n [3-Add favouriteSongs] \n  [4-Display Recomandation] \n [0-Exit]");
 			int option=scan.nextInt();
 		  switch(option){
 		  case 1:
-			  appUI.displayFavouriteSongs();
+			  appUI.displayPlaylist();
 			  break;
 		  case 2:
+				appUI.displayFavouriteSongs();
+				break;
+		  case 3:
+			  appUI.addFavouriteSongs();
+			  break;
+		  case 4:
 				appUI.displayRecomanded();
 				break;
 		   case 0:
