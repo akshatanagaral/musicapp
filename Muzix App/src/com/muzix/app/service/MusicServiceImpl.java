@@ -1,6 +1,6 @@
 package com.muzix.app.service;
 import java.sql.SQLException;
-
+import java.util.List;
 
 import com.muzix.app.dao.MusicDao;
 import com.muzix.app.dao.MusicDaoJdbcImpl;
@@ -16,18 +16,18 @@ public class MusicServiceImpl implements MusicService {
 	}
 	
 	@Override
-	public  String PlayList() throws Exception {
+	public  List<String> PlayList() throws Exception {
 		return daoObject.PlayList() ;
 	
 	}
 	@Override
-	public  String FavouriteSongs() throws Exception {
+	public List<String> FavouriteSongs() throws Exception {
 		return daoObject.FavouriteSongs() ;
 	
 	}
 
 	@Override
-	public String recomandedService() throws SQLException {
+	public List<String> recomandedService() throws SQLException {
 		return daoObject.recomandedService() ;
 	}
 	@Override

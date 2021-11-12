@@ -1,8 +1,7 @@
 package com.muzix.app.ui;
 
 import java.sql.SQLException;
-
-
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -20,7 +19,7 @@ public class MusicAppUI {
 	public void displayPlaylist() 
 	{
 		System.out.println("The PlayList : ");
-		String song=null;
+		List<String> song=null;
 		try {
 			song = service.PlayList();
 		} catch (Exception e) {
@@ -34,7 +33,7 @@ public class MusicAppUI {
 	public void displayFavouriteSongs() 
 	{
 		System.out.println("The Favourite Songs are : ");
-		String song=null;
+		List<String> song=null;
 		try {
 			song = service.FavouriteSongs();
 		} catch (Exception e) {
@@ -48,7 +47,7 @@ public class MusicAppUI {
 	public void displayRecomanded()
 	{
 		System.out.println("The Recomanded Songs are : ");
-		String song=null;
+		List<String> song=null;
 		try {
 			song = service.recomandedService();
 		} catch (Exception e) {
@@ -73,7 +72,7 @@ public class MusicAppUI {
 		Music savedMusic;
 		try {
 			savedMusic = service.addFavouriteSongs(music);
-			System.out.println("Employee Added Successfully:");
+			System.out.println("Song Added Successfully:");
 			System.out.println(savedMusic);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
