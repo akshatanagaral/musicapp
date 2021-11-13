@@ -27,25 +27,25 @@ public class MusicRunner {
 							break;
 					case 2:
 							if(appUI.uesrLogIn()) 
+								
 							{
-								System.out.println("Enter a option :\n[Enter 1 For Display TrackList]\n [Enter 2 For TO Display Favourite Songs ] \n [Enter 3 TO Add FavouriteSongs ]\n[Enter 4 To Display Recomandation]\n [0 - Exit]");
+								while(true){
+								System.out.println("Enter a option :\n[Enter 1 For Display TrackList]\n [Enter 2 For TO Diplay Favourite Songs  ] \n [Enter 3 TO Add FavouriteSongs ]\n[Enter 4 To Display Recomandation]\n [0 - Exit]");
 								int option = scan.nextInt();
 			
 								switch (option) 
 								{
-									case 1:
-										appUI.RegisterUser();;
-										break;
-								  case 2:
+						
+								  case 1:
 									  appUI.displayPlaylist();
 									  break;
-								  case 3:
+								  case 2:
 										appUI.displayFavouriteSongs();
 										break;
-								  case 4:
+								  case 3:
 									  appUI.addFavouriteSongs();
 									  break;
-								  case 5:
+								  case 4:
 										appUI.displayRecomanded();
 										break;
 								   case 0:
@@ -55,6 +55,7 @@ public class MusicRunner {
 										throw new IllegalArgumentException("Invalid Option: " + option);
 								}
 						}
+							}
 						else
 						{
 							System.out.println("You Have Entered Invalid username and password please verify username and Password");

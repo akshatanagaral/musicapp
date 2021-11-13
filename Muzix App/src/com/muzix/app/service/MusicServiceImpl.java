@@ -26,7 +26,7 @@ public class MusicServiceImpl implements MusicService {
 	}
 	
 	@Override
-	public  List<String> PlayList() throws Exception {
+	public  List<Music> PlayList() throws Exception {
 		return daoObject.PlayList();
 	
 	}

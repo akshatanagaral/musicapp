@@ -12,7 +12,7 @@ public class MusicDaoImpl implements  MusicDao {
 	private static Map<String, Music> mu=new HashMap<>();
 
 	@Override
-	public List<String> PlayList() throws SQLException {
+	public List<Music> PlayList() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}

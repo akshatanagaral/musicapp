@@ -41,7 +41,7 @@ public class MusicAppUI {
 			String regex="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
 			
 				if(userEmail.matches(regex)) {
-					System.out.println("Correct Email Address");
+					
 					user.setUserEmail(userEmail);
 				}
 				else {
@@ -94,7 +94,7 @@ public class MusicAppUI {
 	public void displayPlaylist() 
 	{
 		System.out.println("The PlayList : ");
-		List<String> song=null;
+		List<Music> song=null;
 		try {
 			song = service.PlayList();
 		} catch (Exception e) {

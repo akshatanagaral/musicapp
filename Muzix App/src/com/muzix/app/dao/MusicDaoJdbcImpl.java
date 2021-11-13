@@ -25,7 +25,7 @@ public class MusicDaoJdbcImpl implements MusicDao {
 		
 		String query = "insert into user values(?,?,?)";
 		try {
-		   //conn=ConnectionUtil.getJdbcConnection();
+		   conn=ConnectionUtil.getJdbcConnection();
 		   smt= conn.prepareStatement(query);
 		
 			
@@ -48,7 +48,7 @@ public class MusicDaoJdbcImpl implements MusicDao {
 	@Override
 	public boolean userLogIn(String userName, String password) {
 		// TODO Auto-generated method stub
-		String query="select * from user where userName=? and password=?";
+		String query="select * from user where uname=? and password=?";
 		try {
 			smt=conn.prepareStatement(query);
 			smt.setString(1, userName);
@@ -69,17 +69,21 @@ public class MusicDaoJdbcImpl implements MusicDao {
 			return false;
 	}
 	@Override
-	public  List<String> PlayList() throws SQLException {
+	public  List<Music> PlayList() throws SQLException {
 		String query = "select * from Music" ;
 		
 		smt= conn.prepareStatement(query);
 		
 		ResultSet queryResult = smt.executeQuery();
-		List<String> list = new ArrayList<>();
+		List<Music> list = new ArrayList<>();
 		while(queryResult.next())
-		{
-			String res =queryResult.getString("songName");
-			list.add(res);
+			{
+			Music m = new Music();
+			//String res =queryResult.getString("songName");
+			m.setSongName(queryResult.getString("songName"));
+			m.setFilmName(queryResult.getString("filmName"));
+			m.setSingerName(queryResult.getString("singerName"));
+			list.add(m);
 			//System.out.println(res);
 		}
 		return list;
@@ -87,7 +91,7 @@ public class MusicDaoJdbcImpl implements MusicDao {
 
 	@Override
 	public List<String> FavouriteSongs () throws SQLException {
-		String query = "select distinct * from Favourite_songs";
+		String query = "select  * from Favourite_songs";
 		
 		smt= conn.prepareStatement(query);
 		
@@ -106,7 +110,7 @@ public class MusicDaoJdbcImpl implements MusicDao {
 	@Override
 	public List<String> recomandedService() throws SQLException {
 		String foundType="";
-		String query = "select distinct * from Recomanded_songs";
+		String query = "select  * from Recomanded_songs";
         smt=conn.prepareStatement(query);
 		ResultSet queryResult = smt.executeQuery();
 		List<String> list = new ArrayList<>();
