@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.muzix.app.model.Music;
+import com.muzix.app.model.User;
 
 public class MusicDaoImpl implements  MusicDao {
 	private static Map<String, Music> mu=new HashMap<>();
@@ -32,6 +33,17 @@ public class MusicDaoImpl implements  MusicDao {
 	public List<String> recomandedService() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public User ReisterUser(User user) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean userLogIn(String userEmail, String password) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

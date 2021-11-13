@@ -7,7 +7,7 @@ public class MusicRunner {
 	public static void main(String[] args) throws Exception {
 		Scanner scan=new Scanner(System.in);
 	      MusicAppUI appUI=null;
-	      LoginPage l=new LoginPage();
+	   
 	      appUI = new MusicAppUI();
 //		try {
 //			appUI = new MusicAppUI();
@@ -15,37 +15,55 @@ public class MusicRunner {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//		while(true){
-//			System.out.println("Enter option:\n  [1 - Display PlayList] \n [2 - Display Favourite Songs] \n [3-Add favouriteSongs] \n  [4-Display Recomandation] \n [0-Exit]");
-//			int option=scan.nextInt();
-	      boolean b=l.logIn();
-	      System.out.println("welcome to our muzix player and enjoy our service");
-	      while(b)
-			{
-			System.out.println("Enter option:\n[Enter 1 For Display TrackList]\n [Enter 2 TO Display Favourite Songs] \n [Enter 3 For TO Add FavouriteSongs]\n[Enter 4 To Display Recomandation]\n[Enter 0 Exit]");
-				int option=scan.nextInt();
+
+	      while (true) 
+		     {
+				System.out.println("Enter a option :\n [1 -Register New User] \n [2 - LogIn]");
+				int choice = scan.nextInt();
+				switch (choice)
+				{
+					case 1:
+							appUI.RegisterUser();
+							break;
+					case 2:
+							if(appUI.uesrLogIn()) 
+							{
+								System.out.println("Enter a option :\n[Enter 1 For Display TrackList]\n [Enter 2 For TO Display Favourite Songs ] \n [Enter 3 TO Add FavouriteSongs ]\n[Enter 4 To Display Recomandation]\n [0 - Exit]");
+								int option = scan.nextInt();
 			
-		  switch(option){
-		  case 1:
-			  appUI.displayPlaylist();
-			  break;
-		  case 2:
-				appUI.displayFavouriteSongs();
-				break;
-		  case 3:
-			  appUI.addFavouriteSongs();
-			  break;
-		  case 4:
-				appUI.displayRecomanded();
-				break;
-		   case 0:
-			 System.exit(1);
-			  break;
-		  default:
-				throw new IllegalArgumentException("Invalid Option: " + option);
-		  }
-		  System.out.println("\n");
-		}
+								switch (option) 
+								{
+									case 1:
+										appUI.RegisterUser();;
+										break;
+								  case 2:
+									  appUI.displayPlaylist();
+									  break;
+								  case 3:
+										appUI.displayFavouriteSongs();
+										break;
+								  case 4:
+									  appUI.addFavouriteSongs();
+									  break;
+								  case 5:
+										appUI.displayRecomanded();
+										break;
+								   case 0:
+									 System.exit(1);
+									  break;
+								  default:
+										throw new IllegalArgumentException("Invalid Option: " + option);
+								}
+						}
+						else
+						{
+							System.out.println("You Have Entered Invalid username and password please verify username and Password");
+							
+						}
+							System.out.println("\n");
+				}
+
+			}
 		
 
 	}

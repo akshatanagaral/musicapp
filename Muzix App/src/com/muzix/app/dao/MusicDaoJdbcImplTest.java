@@ -15,7 +15,7 @@ public class MusicDaoJdbcImplTest {
 	 public void testAddFavouriteSongs() throws SQLException
 	{
 
-Music m=new Music("Hope","ABC","xxxtentaction");
-assertEquals(m, dao.addFavouriteSongs(m));
+         Music m=new Music("Hope","ABC","xxxtentaction");
+         assertEquals(m, dao.addFavouriteSongs(m));
 	}
 }

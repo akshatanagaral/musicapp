@@ -1,11 +1,15 @@
 package com.muzix.app.ui;
 
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-
+import com.muzix.app.exception.InvalidEmailException;
+import com.muzix.app.exception.InvalidPasswordException;
+import com.muzix.app.exception.InvalidUserNameException;
 import com.muzix.app.model.Music;
+import com.muzix.app.model.User;
 import com.muzix.app.service.MusicService;
 import com.muzix.app.service.MusicServiceImpl;
 
@@ -13,7 +17,78 @@ public class MusicAppUI {
 	private Scanner scan=new Scanner(System.in);
 	private static MusicService service;
 	
-	public MusicAppUI() throws SQLException  {
+	public void RegisterUser()  {
+		User user= new User();
+		System.out.println("Enter User Details to Register=>  ");
+	
+		
+			System.out.print("User Name : ");
+			String userName=scan.next()+scan.nextLine();
+			try {
+				if(userName.length()<2)
+				{
+					throw new InvalidUserNameException("Enter correct User Name to Register :"+userName);
+				}
+				user.setUserName(userName);
+			} catch (InputMismatchException e) {
+				// TODO: handle exception
+				e.getMessage();
+				System.out.println("Enter the correct name : "+userName);
+			}
+			
+			System.out.print("Email : ");
+			String userEmail=scan.next()+scan.nextLine();
+			String regex="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+			
+				if(userEmail.matches(regex)) {
+					System.out.println("Correct Email Address");
+					user.setUserEmail(userEmail);
+				}
+				else {
+					throw new InvalidEmailException("Enter Correct Email Address");
+				}
+			
+			System.out.print("Password : ");
+			String password = scan.next()+scan.nextLine();
+			if(password.length()<8)
+			{
+				throw new InvalidPasswordException("Passowrd Atleast 8 character");
+			}
+			else {
+				user.setPassword(password);
+			}
+			
+			
+			User savedUser;
+			try {
+				savedUser = service.ReisterUser(user);
+				System.out.println("User Added Successfully..");
+				System.out.println(savedUser);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+
+		
+	}
+
+	public boolean uesrLogIn()
+	{
+		System.out.print("Name : ");
+		String userName=scan.next()+scan.nextLine();
+		System.out.print("Password : ");
+		String password=scan.next()+scan.nextLine();
+		try {
+			return service.userLogIn(userName, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+  public MusicAppUI() throws SQLException  {
 		service=new MusicServiceImpl();
 	}
 	public void displayPlaylist() 

@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.muzix.app.exception.DuplicateDataException;
 import com.muzix.app.model.Music;
+import com.muzix.app.model.User;
 
 
 public class MusicDaoJdbcImpl implements MusicDao {
@@ -20,8 +21,56 @@ public class MusicDaoJdbcImpl implements MusicDao {
 		conn=ConnectionUtil.getJdbcConnection();
 	}
 	@Override
+    public User ReisterUser(User user) {
+		
+		String query = "insert into user values(?,?,?)";
+		try {
+		   //conn=ConnectionUtil.getJdbcConnection();
+		   smt= conn.prepareStatement(query);
+		
+			
+			smt.setString(1, user.getUserName());
+			smt.setString(2, user.getUserEmail());
+			smt.setString(3, user.getPassword());
+			
+			
+			int insertedRowCount = smt.executeUpdate();
+			if(insertedRowCount>0) {
+				return user;
+			}
+		} catch (DuplicateDataException | SQLException e) {
+			// TODO: handle exception
+		   throw new DuplicateDataException("user Already Exists");
+		}
+		
+		return null;
+	}
+	@Override
+	public boolean userLogIn(String userName, String password) {
+		// TODO Auto-generated method stub
+		String query="select * from user where userName=? and password=?";
+		try {
+			smt=conn.prepareStatement(query);
+			smt.setString(1, userName);
+			smt.setString(2, password);
+			
+			ResultSet queryResult = smt.executeQuery();
+			
+			
+			if(queryResult.next()) {
+				return true;
+			}
+			
+		} catch (SQLException  | NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+			return false;
+	}
+	@Override
 	public  List<String> PlayList() throws SQLException {
-		String query = "select songName from Music" ;
+		String query = "select * from Music" ;
 		
 		smt= conn.prepareStatement(query);
 		
@@ -38,7 +87,7 @@ public class MusicDaoJdbcImpl implements MusicDao {
 
 	@Override
 	public List<String> FavouriteSongs () throws SQLException {
-		String query = "select distinct favourite_songs from Favourite_songs";
+		String query = "select distinct * from Favourite_songs";
 		
 		smt= conn.prepareStatement(query);
 		
@@ -57,7 +106,7 @@ public class MusicDaoJdbcImpl implements MusicDao {
 	@Override
 	public List<String> recomandedService() throws SQLException {
 		String foundType="";
-		String query = "select distinct recomanded_songs from Recomanded_songs";
+		String query = "select distinct * from Recomanded_songs";
         smt=conn.prepareStatement(query);
 		ResultSet queryResult = smt.executeQuery();
 		List<String> list = new ArrayList<>();
@@ -75,11 +124,12 @@ public class MusicDaoJdbcImpl implements MusicDao {
       String query = "insert into Favourite_songs values(?,?,?)";
 
 		try{
-		smt= conn.prepareStatement(query);
+		     conn=ConnectionUtil.getJdbcConnection();
+		     smt= conn.prepareStatement(query);
 
-		smt.setString(1, music.getSongName());
-		smt.setString(2, music.getFilmName());
-	    smt.setString(3, music.getSingerName());
+		     smt.setString(1, music.getSongName());
+		     smt.setString(2, music.getFilmName());
+	         smt.setString(3, music.getSingerName());
 
 		int insertedRowCount = smt.executeUpdate();
 		if(insertedRowCount>0) {
