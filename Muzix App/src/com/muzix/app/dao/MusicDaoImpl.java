@@ -28,6 +28,11 @@ public class MusicDaoImpl implements  MusicDao {
 		mu.put(music.getSongName(), music);
 		return music;
 	}
+	@Override
+	public boolean deleteFavouriteSong(Music music) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	@Override
 	public List<String> recomandedService() throws SQLException {

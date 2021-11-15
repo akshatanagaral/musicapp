@@ -18,4 +18,11 @@ public class MusicDaoJdbcImplTest {
          Music m=new Music("Hope","ABC","xxxtentaction");
          assertEquals(m, dao.addFavouriteSongs(m));
 	}
+	@Test
+	 public void testFavouriteSongs() throws SQLException
+	{
+
+//        Music m=new Music("Hope","ABC","xxxtentaction");
+//        assertEquals(m, dao.addFavouriteSongs(m));
+	}
 }

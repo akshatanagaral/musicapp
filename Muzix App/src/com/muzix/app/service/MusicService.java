@@ -12,6 +12,7 @@ public interface MusicService {
 	public List<Music> PlayList() throws Exception;
 	public List<String> FavouriteSongs() throws Exception;
 	 public Music addFavouriteSongs(Music music) throws Exception;
+	 public boolean deleteFavouriteSong(Music music) throws Exception;
 	public List<String> recomandedService() throws Exception;
 
 }

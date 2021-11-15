@@ -47,7 +47,6 @@ public class MusicDaoJdbcImpl implements MusicDao {
 	}
 	@Override
 	public boolean userLogIn(String userName, String password) {
-		// TODO Auto-generated method stub
 		String query="select * from user where uname=? and password=?";
 		try {
 			smt=conn.prepareStatement(query);
@@ -62,7 +61,7 @@ public class MusicDaoJdbcImpl implements MusicDao {
 			}
 			
 		} catch (SQLException  | NullPointerException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -148,7 +147,21 @@ public class MusicDaoJdbcImpl implements MusicDao {
 			
 			return null;
 		}
+	@Override
+	public boolean deleteFavouriteSong(Music music) throws Exception {
+		String query = "delete from favourite_songs where favourite_songs = ?";
+		smt = conn.prepareStatement(query);
+		smt.setString(1, music.getSongName());
+		int rowCount = smt.executeUpdate();
+		if(rowCount==0)
+		{
+			return false;
+		}
+		return true;
+	}
+
 }
+
 	
 
 

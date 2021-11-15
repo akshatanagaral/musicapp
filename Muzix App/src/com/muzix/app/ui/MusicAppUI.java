@@ -155,4 +155,23 @@ public class MusicAppUI {
 		}
 		
 	}
+	public void deleteFavouriteSong()
+	{
+		System.out.println("Enter the Song Details : ");
+		System.out.println("Enter the Favourite Song : ");
+		String songName = scan.next()+scan.nextLine();
+		Music music = new Music(songName);
+		boolean deleteMusic;
+	
+		try
+		{
+			deleteMusic = service.deleteFavouriteSong(music);
+			System.out.println("Favourite Song Deleted Successfully!!");
+			System.out.println(deleteMusic);
+		}
+		catch(Exception e1)
+		{	System.out.println(e1.getMessage());
+		}
+		
+	}
 }

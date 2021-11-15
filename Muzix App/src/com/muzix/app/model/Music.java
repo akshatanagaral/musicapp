@@ -8,6 +8,13 @@ public class Music {
 public Music(){
 		
 	}
+
+public Music(String songName)
+{
+	super();
+	this.songName = songName;
+	
+}
 public Music(String songName, String filmName, String singerName) {
 	super();
 	

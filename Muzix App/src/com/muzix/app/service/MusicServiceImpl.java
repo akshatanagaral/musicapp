@@ -54,6 +54,12 @@ public class MusicServiceImpl implements MusicService {
 		// TODO Auto-generated method stub
 		return daoObject.ReisterUser(user);
 	}
+
+	@Override
+	public boolean deleteFavouriteSong(Music music) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 }
