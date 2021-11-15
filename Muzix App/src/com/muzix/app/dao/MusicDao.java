@@ -12,8 +12,8 @@ public interface MusicDao {
 	public List<Music> PlayList() throws SQLException;
     public List<String> FavouriteSongs() throws SQLException; 
     public Music addFavouriteSongs(Music music) throws SQLException;
-    public boolean deleteFavouriteSong(Music music) throws Exception;
-	 public  List<String> recomandedService() throws SQLException;
-	
+    public  List<String> recomandedService() throws SQLException;
+	 public List<User> getAllUser() throws SQLException;
+	 
 
 }

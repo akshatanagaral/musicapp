@@ -155,22 +155,17 @@ public class MusicAppUI {
 		}
 		
 	}
-	public void deleteFavouriteSong()
-	{
-		System.out.println("Enter the Song Details : ");
-		System.out.println("Enter the Favourite Song : ");
-		String songName = scan.next()+scan.nextLine();
-		Music music = new Music(songName);
-		boolean deleteMusic;
 	
-		try
-		{
-			deleteMusic = service.deleteFavouriteSong(music);
-			System.out.println("Favourite Song Deleted Successfully!!");
-			System.out.println(deleteMusic);
-		}
-		catch(Exception e1)
-		{	System.out.println(e1.getMessage());
+	public void showAllUserDetails() {
+	  List<User> uList;
+		try {
+			uList=service.getAllUser();
+			for (User user :uList) {
+				System.out.println(user.toString());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}

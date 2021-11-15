@@ -46,19 +46,19 @@ public class MusicServiceImpl implements MusicService {
 	}
 	@Override
 	public boolean userLogIn(String userName, String password) throws SQLException {
-		// TODO Auto-generated method stub
+	
 		return daoObject.userLogIn(userName,password);
 	}
 	@Override
 	public User ReisterUser(User user) throws SQLException {
-		// TODO Auto-generated method stub
+	
 		return daoObject.ReisterUser(user);
 	}
 
 	@Override
-	public boolean deleteFavouriteSong(Music music) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public List<User> getAllUser() throws SQLException {
+	
+		return daoObject.getAllUser();
 	}
 	
 

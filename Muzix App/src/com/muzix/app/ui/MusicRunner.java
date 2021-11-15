@@ -30,7 +30,9 @@ public class MusicRunner {
 								
 							{
 								while(true){
-								System.out.println("Enter a option :\n[Enter 1 For Display TrackList]\n [Enter 2 For TO Diplay Favourite Songs  ] \n [Enter 3 TO Add FavouriteSongs ]\n[Enter 4 To Delete Favourite Song]\n[Enter 5 To Display Recomandation]\n [0 - Exit]");
+								System.out.println("Enter a option : \n [Enter 1 For Display TrackList] \n [Enter 2 For TO Diplay Favourite Songs] \n"
+										+ " [Enter 3 TO Add FavouriteSongs ] \n"
+										+ "[Enter4 To Display Recomandation] \n [Enter 5 To Display All User] \n [0 - Exit]");
 								int option = scan.nextInt();
 			
 								switch (option) 
@@ -46,11 +48,10 @@ public class MusicRunner {
 									  appUI.addFavouriteSongs();
 									  break;
 								  case 4:
-									  appUI.deleteFavouriteSong();
-									  break;
-									  
-								  case 5:
 										appUI.displayRecomanded();
+										break;
+								  case 5:
+										appUI.showAllUserDetails();;
 										break;
 								   case 0:
 									 System.exit(1);

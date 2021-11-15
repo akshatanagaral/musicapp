@@ -28,13 +28,8 @@ public class MusicDaoImpl implements  MusicDao {
 		mu.put(music.getSongName(), music);
 		return music;
 	}
-	@Override
-	public boolean deleteFavouriteSong(Music music) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
+	
+    @Override
 	public List<String> recomandedService() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
@@ -49,6 +44,12 @@ public class MusicDaoImpl implements  MusicDao {
 	public boolean userLogIn(String userEmail, String password) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<User> getAllUser() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

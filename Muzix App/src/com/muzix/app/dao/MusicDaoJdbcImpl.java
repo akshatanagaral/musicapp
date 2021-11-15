@@ -1,17 +1,15 @@
 package com.muzix.app.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.muzix.app.exception.DuplicateDataException;
 import com.muzix.app.model.Music;
 import com.muzix.app.model.User;
-
-
 public class MusicDaoJdbcImpl implements MusicDao {
 	private Connection conn;
 
@@ -148,16 +146,26 @@ public class MusicDaoJdbcImpl implements MusicDao {
 			return null;
 		}
 	@Override
-	public boolean deleteFavouriteSong(Music music) throws Exception {
-		String query = "delete from favourite_songs where favourite_songs = ?";
-		smt = conn.prepareStatement(query);
-		smt.setString(1, music.getSongName());
-		int rowCount = smt.executeUpdate();
-		if(rowCount==0)
-		{
-			return false;
+	public List<User> getAllUser() throws SQLException {
+		String query="select * from user";
+		conn=ConnectionUtil.getJdbcConnection();
+		smt= conn.prepareStatement(query);
+		
+		ResultSet rst = smt.executeQuery();
+		
+		List<User> user=new ArrayList<User>();
+		
+		while(rst.next()) {
+			User us = new User();
+			us.setUserName(rst.getString("uname"));
+		
+			us.setUserEmail(rst.getString("email"));
+		
+			us.setPassword(rst.getString("password"));
+			user.add(us);
 		}
-		return true;
+		
+		return user;
 	}
 
 }
